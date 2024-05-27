@@ -1,25 +1,45 @@
-﻿namespace Calculator
+﻿
+
+using System.Diagnostics;
+
+namespace Calculator
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+
+        string currentText = "";
 
         public MainPage()
         {
             InitializeComponent();
+            OnClear(this, null);
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        void OnClear(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            this.ResultText.Text = "";
+            currentText = string.Empty;
         }
-    }
 
+        void OnCalculate(object sender, EventArgs e)
+        {
+            
+            double answer = Calculator.Calculate(currentText);
+            Debug.WriteLine(answer);
+            this.CalculationText.Text = $"{answer}";
+            this.ResultText.Text = "";
+            currentText = string.Empty;
+            
+        }
+
+        void OnSelection(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string buttonPressed = button.Text;
+            currentText += buttonPressed;
+
+            this.ResultText.Text += buttonPressed;
+        }
+
+    }
 }
