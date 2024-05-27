@@ -65,7 +65,7 @@
 
         <Button Text="÷" Grid.Row="1" Grid.Column="3"
                Clicked="OnSelection" />
-        <Button Text="×" Grid.Row="2" Grid.Column="3"
+        <Button Text="x" Grid.Row="2" Grid.Column="3"
                Clicked="OnSelection" />
         <Button Text="-" Grid.Row="3" Grid.Column="3"
                Clicked="OnSelection" />
