@@ -3,37 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Calculator.MainPage">
 
-    <Grid Padding="15" RowSpacing="1.5" ColumnSpacing="1.5"
-          RowDefinitions="2*,*,*,*,*,*" ColumnDefinitions="*,*,*,*">
+    <Grid Padding="20" RowSpacing="4" ColumnSpacing="5"
+          RowDefinitions="2*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
         
         <Label x:Name="CalculationText"
                FontSize="22"
                LineBreakMode="NoWrap"
-               Grid.ColumnSpan="4"
+               Grid.ColumnSpan="5"
                Text=""
                TextColor="{StaticResource BrightYellow}"
                HorizontalTextAlignment="End"
                VerticalTextAlignment="Start"
                Grid.Row="0"/>
 
-        <Label x:Name="ResultText"
+        <Editor x:Name="ResultText"
                FontSize="64" FontAttributes="Bold" Text=""
                HorizontalTextAlignment="End"
                VerticalTextAlignment="End"
-               TextColor="{StaticResource Gold}"
-               LineBreakMode="NoWrap" Grid.ColumnSpan="4" />
+               TextColor="{StaticResource Gold}" Grid.ColumnSpan="5" />
 
-        <BoxView BackgroundColor="{StaticResource DeepOrange}" HeightRequest="1"
+        <BoxView BackgroundColor="{StaticResource Secondary}" HeightRequest="1"
                  Grid.Row="0" VerticalOptions="End"
-                 Grid.ColumnSpan="4"/>
+                 Grid.ColumnSpan="5"/>
 
 
-        <Button Text="C" Grid.Row="1" Grid.Column="0"
-               Clicked="OnClear" />
+        <Button Text="AC" Grid.Row="1" Grid.Column="0"
+               Clicked="OnClear" Style="{StaticResource SecondaryButton}"/>
         <Button Text="(" Grid.Row="1" Grid.Column="1"
-               Clicked="OnSelection" />
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text=")" Grid.Row="1" Grid.Column="2"
-               Clicked="OnSelection" />
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
 
         <Button Text="7" Grid.Row="2" Grid.Column="0"
                Clicked="OnSelection" />
@@ -56,25 +55,35 @@
         <Button Text="3" Grid.Row="4" Grid.Column="2"
               Clicked="OnSelection" />
 
-        <Button Text="00" Grid.Row="5" Grid.Column="0" 
+        <Button Text="0" Grid.Row="5" Grid.Column="0" 
               Clicked="OnSelection" />
-        <Button Text="0" Grid.Row="5" Grid.Column="1" 
+        <Button Text="." Grid.Row="5" Grid.Column="1" 
               Clicked="OnSelection" />
-        <Button Text="." Grid.Row="5" Grid.Column="2" 
-              Clicked="OnSelection" />
+        <Button Text="=" Grid.Row="5" Grid.Column="2" 
+              Clicked="OnCalculate" />
 
         <Button Text="÷" Grid.Row="1" Grid.Column="3"
-               Clicked="OnSelection" />
-        <Button Text="×" Grid.Row="2" Grid.Column="3"
-               Clicked="OnSelection" />
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="x" Grid.Row="2" Grid.Column="3"
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text="-" Grid.Row="3" Grid.Column="3"
-               Clicked="OnSelection" />
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text="+" Grid.Row="4" Grid.Column="3"
-               Clicked="OnSelection" />
+               Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="ANS" Grid.Row="5" Grid.Column="3" 
+               Clicked="OnPrevious" Style="{StaticResource SecondaryButton}"/>
 
-        <Button Text="=" Grid.Row="5" Grid.Column="3" 
-               Clicked="OnCalculate" />
-        
+        <Button Text="^" Grid.Row="1" Grid.Column="4"
+                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="e" Grid.Row="2" Grid.Column="4"
+                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="π" Grid.Row="3" Grid.Column="4"
+                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="%" Grid.Row="4" Grid.Column="4"
+                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="!" Grid.Row="5" Grid.Column="4" 
+                Clicked="OnCalculate" Style="{StaticResource SecondaryButton}"/>
+
     </Grid>
 
 </ContentPage>

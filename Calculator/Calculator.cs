@@ -3,11 +3,19 @@ namespace Calculator;
 
 public class Calculator
 {
-    public static double Calculate(string calculationString)
+    public static string Calculate(string calculationString)
     {
-        var parsedList = Parse(calculationString);
-        var rootNode = ConstructTree(parsedList);
-        return SolveTree(rootNode);
+        try
+        {
+            var parsedList = Parse(calculationString);
+            var rootNode = ConstructTree(parsedList);
+            return "" + SolveTree(rootNode);
+        }
+        catch (InvalidOperationException ex) 
+        {
+            return "Invalid Expression";
+        }
+        
     }
 
     private static List<string> Parse(string calculationString)
@@ -54,6 +62,10 @@ public class Calculator
                 i++;
             }
         }
+        while (stack.Count > 0)
+        {
+            output.Add(stack.Pop());
+        }
 
         return output;
     }
@@ -62,8 +74,10 @@ public class Calculator
     {
         if (op == "+" || op == "-")
             return 1;
-        if (op == "*" || op == "/")
+        if (op == "x" || op == "÷")
             return 2;
+        if (op == "^")
+            return 3;
         return 0;
     }
 
@@ -108,6 +122,8 @@ public class Calculator
                 return left * right;
             case "÷":
                 return left / right;
+            case "^":
+                return Math.Pow(left, right);
             default:
                 throw new InvalidOperationException("Invalid operator");
         }
