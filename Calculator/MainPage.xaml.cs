@@ -8,6 +8,7 @@ namespace Calculator
     {
 
         string currentText = "";
+        string previousAnswer = "";
 
         public MainPage()
         {
@@ -23,13 +24,11 @@ namespace Calculator
 
         void OnCalculate(object sender, EventArgs e)
         {
-            
-            double answer = Calculator.Calculate(currentText);
-            Debug.WriteLine(answer);
-            this.CalculationText.Text = $"{answer}";
+            string answer = Calculator.Calculate(this.ResultText.Text);
+            this.CalculationText.Text = answer;
             this.ResultText.Text = "";
             currentText = string.Empty;
-            
+            previousAnswer = answer;
         }
 
         void OnSelection(object sender, EventArgs e)
@@ -39,6 +38,11 @@ namespace Calculator
             currentText += buttonPressed;
 
             this.ResultText.Text += buttonPressed;
+        }
+
+        void OnPrevious(object sender, EventArgs e)
+        {
+            this.ResultText.Text += previousAnswer;
         }
 
     }
