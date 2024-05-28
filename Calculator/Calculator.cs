@@ -14,8 +14,7 @@ public class Calculator
         catch (InvalidOperationException ex) 
         {
             return "Invalid Expression";
-        }
-        
+        }    
     }
 
     private static List<string> Parse(string calculationString)
@@ -24,10 +23,11 @@ public class Calculator
         List<string> output = new List<string>();
         int i = 0;
         int size = calculationString.Length;
+        bool operatorBehindBracket = false;
 
         while (i < size)
         {
-            if (char.IsDigit(calculationString[i]) || calculationString[i] == '.') 
+            if (char.IsDigit(calculationString[i]) || calculationString[i] == '.')
             {
                 string numString = "";
 
@@ -37,9 +37,29 @@ public class Calculator
                     i++;
                 }
                 output.Add(numString);
-            }
+                // Check for implicit multiplication with π, e, or (
+                if (i < size && (calculationString[i] == 'π' || calculationString[i] == 'e' || calculationString[i] == '%'))
+                {
+                    if (calculationString[i] == 'π')
+                        output.Add(Math.PI.ToString());
+
+                    else if (calculationString[i] == 'e')
+                        output.Add(Math.E.ToString());
+
+                    else if (calculationString[i] == '%')
+                        output.Add(""+0.01);
+
+                    i++;
+                    output.Add("x");
+
+                }
+            } 
             else if (calculationString[i] == '(')
             {
+                if (i > 0 && (char.IsDigit(calculationString[i - 1]) || calculationString[i - 1] == 'π' || calculationString[i] == '%' || calculationString[i - 1] == 'e'))
+                {
+                    operatorBehindBracket = true;
+                }
                 stack.Push(calculationString[i].ToString());
                 i++;
             }
@@ -49,8 +69,13 @@ public class Calculator
                 {
                     output.Add(stack.Pop());
                 }
+
+                if (operatorBehindBracket)
+                    output.Add("x");
+
                 stack.Pop();
                 i++;
+                
             }
             else
             {
@@ -66,10 +91,8 @@ public class Calculator
         {
             output.Add(stack.Pop());
         }
-
         return output;
     }
-
     private static int OperatorPrecedence(string op)
     {
         if (op == "+" || op == "-")

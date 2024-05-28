@@ -81,8 +81,8 @@
                 Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text="%" Grid.Row="4" Grid.Column="4"
                 Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
-        <Button Text="!" Grid.Row="5" Grid.Column="4" 
-                Clicked="OnCalculate" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="CE" Grid.Row="5" Grid.Column="4" 
+                Clicked="OnRemoval" Style="{StaticResource SecondaryButton}"/>
 
     </Grid>
 
