@@ -45,5 +45,13 @@ namespace Calculator
             this.ResultText.Text += previousAnswer;
         }
 
+        void OnRemoval(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.ResultText.Text)) 
+            {
+                this.ResultText.Text = this.ResultText.Text.Substring(0, this.ResultText.Text.Length - 1); 
+            }
+        }
+
     }
 }
