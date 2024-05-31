@@ -26,9 +26,8 @@
                  Grid.Row="0" VerticalOptions="End"
                  Grid.ColumnSpan="5"/>
 
-
-        <Button Text="AC" Grid.Row="1" Grid.Column="0"
-               Clicked="OnClear" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="ANS" Grid.Row="1" Grid.Column="0"
+               Clicked="OnPrevious" Style="{StaticResource SecondaryButton}"/>
         <Button Text="(" Grid.Row="1" Grid.Column="1"
                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text=")" Grid.Row="1" Grid.Column="2"
@@ -70,8 +69,8 @@
                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
         <Button Text="+" Grid.Row="4" Grid.Column="3"
                Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>
-        <Button Text="ANS" Grid.Row="5" Grid.Column="3" 
-               Clicked="OnPrevious" Style="{StaticResource SecondaryButton}"/>
+        <Button Text="AC" Grid.Row="5" Grid.Column="3" 
+               Clicked="OnClear" Style="{StaticResource SecondaryButton}"/>
 
         <Button Text="^" Grid.Row="1" Grid.Column="4"
                 Clicked="OnSelection" Style="{StaticResource SecondaryButton}"/>

@@ -1,7 +1,4 @@
 ﻿
-
-using System.Diagnostics;
-
 namespace Calculator
 {
     public partial class MainPage : ContentPage
